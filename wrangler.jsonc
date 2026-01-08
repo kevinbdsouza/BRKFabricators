@@ -1,11 +1,10 @@
 {
-  "name": "brk-fabricators",
-  "compatibility_date": "2024-09-23",
-  "assets": {
-    "binding": "ASSETS",
-    "directory": "."
-  },
-  "observability": {
-    "enabled": true
-  }
+    "name": "brk-fabricators",
+    "compatibility_date": "2024-09-23",
+    "assets": {
+        "directory": "."
+    },
+    "observability": {
+        "enabled": true
+    }
 }
