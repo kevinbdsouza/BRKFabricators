@@ -1,0 +1,18 @@
+# Directories to ignore
+.git
+.github
+.vscode
+.idea
+node_modules
+images_backup
+
+# Files to ignore
+.DS_Store
+.gitignore
+.wranglerignore
+wrangler.jsonc
+optimize_images.sh
+README.md
+task.md
+walkthrough.md
+implementation_plan.md
