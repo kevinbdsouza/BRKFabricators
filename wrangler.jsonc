@@ -2,7 +2,7 @@
     "name": "brk-fabricators",
     "compatibility_date": "2024-09-23",
     "assets": {
-        "directory": "."
+        "directory": "./public"
     },
     "observability": {
         "enabled": true
