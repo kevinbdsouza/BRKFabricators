@@ -1,28 +1,29 @@
 #!/bin/bash
 
-# Backup images folder
-if [ ! -d "images_backup" ]; then
-    echo "Creating backup..."
-    cp -r images images_backup
+# Backup images folder within public
+if [ ! -d "public/images_backup" ]; then
+    echo "Creating backup in public/images_backup..."
+    cp -r public/images public/images_backup
 else
-    echo "Backup already exists, skipping backup creation."
+    echo "Backup already exists in public/images_backup, skipping backup creation."
 fi
 
-# Optimize JPEGs larger than 500KB
+# Optimize JPEGs larger than 300KB (lowered threshold)
 echo "Optimizing JPEGs..."
-find images -type f \( -name "*.jpg" -o -name "*.jpeg" \) -size +500k | while read file; do
+find public/images -type f \( -name "*.jpg" -o -name "*.jpeg" \) -size +300k -print0 | while IFS= read -r -d '' file; do
     current_size=$(ls -lh "$file" | awk '{print $5}')
     echo "Optimizing $file ($current_size)..."
-    # Resize to max width 1600px and set quality to 70%
-    sips -Z 1600 -s formatOptions 70 "$file" --out "$file" > /dev/null
+    # Resize to max width 800px and set quality to 60%
+    sips -Z 800 -s formatOptions 60 "$file" --out "$file" > /dev/null
 done
 
-# Optimize PNGs larger than 500KB (Resize only, sips png compression is limited)
+# Optimize PNGs larger than 300KB
 echo "Optimizing PNGs..."
-find images -type f -name "*.png" -size +500k | while read file; do
+find public/images -type f -name "*.png" -size +300k -print0 | while IFS= read -r -d '' file; do
     current_size=$(ls -lh "$file" | awk '{print $5}')
     echo "Optimizing $file ($current_size)..."
-    sips -Z 1600 "$file" --out "$file" > /dev/null
+    # Resize to max width 800px
+    sips -Z 800 "$file" --out "$file" > /dev/null
 done
 
 echo "Optimization complete."
