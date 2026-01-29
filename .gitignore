@@ -1,0 +1,22 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+
+# Node modules (if npm packages are used)
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Wrangler/Cloudflare
+.wrangler/
+
+# Environment files
+.env
+.env.local
+.env.*.local
